@@ -17,6 +17,8 @@ defmodule MarketplaceWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    get "/market", MarketController, :index
   end
 
   # Other scopes may use custom stacks.
