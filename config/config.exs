@@ -15,7 +15,10 @@ config :marketplace, MarketplaceWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "LLNrJgr5CRWIfAQfjCnh/zced1L2CMxAgNI4dkOrp6IqJHX2edWcldVkqYuJbKe6",
   render_errors: [view: MarketplaceWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: Marketplace.PubSub, adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: Marketplace.PubSub, adapter: Phoenix.PubSub.PG2],
+  live_view: [
+    signing_salt: "This is so secret"
+  ]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,6 +27,8 @@ config :logger, :console,
 
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
+
+config :phoenix, template_engines: [leex: Phoenix.LiveView.Engine]
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
